@@ -1,4 +1,22 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# azure-rest-api-swagger
+
+[https://azure-rest-api-swagger.vercel.app/](https://azure-rest-api-swagger.vercel.app/)
+
+Swagger-UI-based Azure REST API documentation generated from [official Azure OpenAPI specs](https://github.com/Azure/azure-rest-api-specs). Alternative to [official docs](https://learn.microsoft.com/en-us/rest/api/azure/). Feedback and PRs are welcome.
+
+![Screenshot 1](./screenshot1.png)
+![Screenshot 2](./screenshot2.png)
+
+## Features
+
+- interactive tree model of every ARM API's response, with field descriptions and admissible types in one place.
+
+## TODOs
+
+- data plane APIs
+- better search bar
+- support directly send requests from the webpage
+- support MS specific swagger extensions
 
 ## Getting Started
 
@@ -15,8 +33,6 @@ pnpm dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
 ## Learn More
 
