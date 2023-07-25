@@ -2,7 +2,7 @@
 import {SwaggerUIBundle, SwaggerUIStandalonePreset} from 'swagger-ui-dist'
 import 'swagger-ui-dist/swagger-ui.css';
 import { useEffect } from 'react';
-
+import urls from 'public/urls.json'
 export default function Home() {
 
   return (
@@ -17,7 +17,7 @@ function SwaggerComponent() {
   useEffect(() => {
     SwaggerUIBundle({
       dom_id: '#swagger',
-      url: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-03-01/virtualMachine.json',
+      urls: urls,
       presets: [
         SwaggerUIBundle.presets.apis,
         SwaggerUIStandalonePreset
