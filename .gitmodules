@@ -1,0 +1,3 @@
+[submodule "azure-rest-api-specs"]
+	path = azure-rest-api-specs
+	url = git@github.com:Azure/azure-rest-api-specs.git
