@@ -7,6 +7,7 @@ export default function Home() {
 
   return (
     <>
+    <a href='https://github.com/Amaizzzzz/azure-rest-api-swagger'>GitHub</a>
     <div id="swagger"></div>
     <SwaggerComponent />
     </>
