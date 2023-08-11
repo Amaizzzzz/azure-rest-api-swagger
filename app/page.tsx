@@ -1,14 +1,14 @@
 'use client';
-import SwaggerUI  from 'swagger-ui'
+import SwaggerUI from 'swagger-ui'
 import 'swagger-ui/dist/swagger-ui.css';
 import { useEffect, useRef, useState } from 'react';
 import urls from '../public/urls.json'
+import Select from 'react-select'
 
 export default function Home() {
 
   return (
     <>
-      <a href='https://github.com/Amaizzzzz/azure-rest-api-swagger'>GitHub</a>
       <SwaggerComponent />
     </>
   )
@@ -29,18 +29,16 @@ function SwaggerComponent() {
   }, [setSwaggerObject, ref]);
 
   return (<>
-    <button onClick={() => {
-      if (swaggerObject != null) {
-        swaggerObject.specActions.updateUrl("https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2022-08-01/apimapis.json")
-        swaggerObject.specActions.download("https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2022-08-01/apimapis.json")
-      }
-    }}>API 1</button>
-    <button onClick={() => {
-      if (swaggerObject != null) {
-        swaggerObject.specActions.updateUrl("https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2022-08-01/apimdeployment.json")
-        swaggerObject.specActions.download("https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2022-08-01/apimdeployment.json")
-      }
-    }}>API 2</button>
+    <a href='https://github.com/Amaizzzzz/azure-rest-api-swagger'>GitHub</a>
+    {(swaggerObject != null) ? (<>
+      <Select
+        options={urls}
+        getOptionLabel={(option) => option.name}
+        onChange={(e) => {
+          swaggerObject.specActions.updateUrl(e.url)
+          swaggerObject.specActions.download(e.url)
+        }} />
+    </>) : (<></>)}
     <div ref={ref} />
   </>);
 }

@@ -9,17 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@types/swagger-ui": "^3.52.0",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.12",
     "next": "13.4.12",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-select": "^5.7.4",
     "swagger-ui": "^5.3.1"
   },
   "devDependencies": {
     "@types/node": "^20.4.9",
     "@types/react": "^18.2.20",
+    "@types/react-select": "^5.0.1",
+    "@types/swagger-ui": "^3.52.0",
     "typescript": "^5.1.6"
   }
 }
