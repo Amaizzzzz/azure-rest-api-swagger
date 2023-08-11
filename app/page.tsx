@@ -2,7 +2,7 @@
 import {SwaggerUIBundle, SwaggerUIStandalonePreset} from 'swagger-ui-dist'
 import 'swagger-ui-dist/swagger-ui.css';
 import { useEffect } from 'react';
-import urls from 'public/urls.json'
+import urls from '../public/urls.json'
 export default function Home() {
 
   return (
