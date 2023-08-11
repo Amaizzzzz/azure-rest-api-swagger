@@ -1,12 +1,8 @@
-'use client'
-import { SwaggerUIBundle, SwaggerUIStandalonePreset } from 'swagger-ui-dist'
-import 'swagger-ui-dist/swagger-ui.css';
+'use client';
+import SwaggerUI  from 'swagger-ui'
+import 'swagger-ui/dist/swagger-ui.css';
 import { useEffect, useRef, useState } from 'react';
 import urls from '../public/urls.json'
-
-const CustomPreset = [
-  SwaggerUIBundle.plugins.TopbarPlugin
-]
 
 export default function Home() {
 
@@ -23,17 +19,10 @@ function SwaggerComponent() {
   const ref = useRef(null);
   useEffect(() => {
     if (ref.current != null) {
-      const swaggerObject = SwaggerUIBundle({
-        // dom_id: '#swagger',
+      const swaggerObject = SwaggerUI({
         domNode: ref.current,
         url: "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2022-08-01/apimapis.json",
         // urls: urls,
-        presets: [
-          SwaggerUIBundle.presets.apis,
-          // SwaggerUIStandalonePreset,
-          // CustomPreset
-        ],
-        // layout: "StandaloneLayout"
       })
       setSwaggerObject(swaggerObject);
     }
