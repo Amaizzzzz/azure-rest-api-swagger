@@ -22,6 +22,10 @@ export default function Home() {
   );
 }
 
+function makeAcronym(s: string) {
+  return s.replace(/[^A-Z]/g, "");
+}
+
 function SwaggerComponent() {
   const [swaggerObject, setSwaggerObject] = useState(null);
   const ref = useRef(null);
@@ -66,7 +70,7 @@ function SwaggerComponent() {
         trim: true,
         matchFrom: "any" as const,
         stringify: (option: FilterOptionOption<UrlGroup>) =>
-          `${option.data.label} ${option.data.path_without_api_version}`,
+          `${option.data.label} ${option.data.path_without_api_version} ${makeAcronym(option.data.label)}`,
       }),
     []
   );
