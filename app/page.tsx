@@ -7,10 +7,13 @@ import Select, { createFilter } from 'react-select'
 import { FilterOptionOption } from 'react-select/dist/declarations/src/filters';
 
 // infer the type of urls
-type Urls = typeof urls;
+type UrlGroups = typeof urls;
 
 // infer the type of elements of urls
-type Url = Urls[number];
+type UrlGroup = UrlGroups[number];
+
+// infer the type of options field of UrlGroup
+type UrlOption = UrlGroup['options'][number]
 
 export default function Home() {
 
@@ -39,17 +42,18 @@ function SwaggerComponent() {
     ignoreAccents: true,
     trim: true,
     matchFrom: "any" as const,
-    stringify: (option: FilterOptionOption<Url>) => `${option.data.name} ${option.data.url}`,
+    stringify: (option: FilterOptionOption<UrlOption>) => `${option.data.name} ${option.data.path_without_api_version} ${option.data.api_version} ${option.data.url}`,
   }), []);
 
   // TODO: better styling
+  // TODO: use a separate dropdown for API version
   return (<>
     <a href='https://github.com/Amaizzzzz/azure-rest-api-swagger'>GitHub</a>
     {(swaggerObject != null) ? (<>
-      <Select
+      <Select<UrlOption>
         // TODO: add hint for what to type
         options={urls}
-        getOptionLabel={(option) => option.name}
+        getOptionLabel={x => `${x.name} ${x.api_version}`}
         onChange={(e) => {
           swaggerObject.specActions.updateUrl(e.url)
           swaggerObject.specActions.download(e.url)
