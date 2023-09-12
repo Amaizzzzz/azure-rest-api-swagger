@@ -17,13 +17,15 @@ export default function Home({ searchParams }) {
   return (
     <>
       <header className={css.header}>
-        <h1>Azure REST API Swagger</h1>
-        <a
-          href="https://github.com/Amaizzzzz/azure-rest-api-swagger"
-          target="_blank"
-        >
-          GitHub
-        </a>
+        <div className={`${css.wrapper} ${css.flex}`} >
+          <h1>Azure REST API Swagger</h1>
+          <a
+            href="https://github.com/Amaizzzzz/azure-rest-api-swagger"
+            target="_blank"
+          >
+            GitHub
+          </a>
+        </div>
       </header>
       <SwaggerComponent api={api} version={version} />
     </>
@@ -108,25 +110,27 @@ function SwaggerComponent(props: { api?: string; version?: string }) {
   // TODO: better styling
   return (
     <>
-      <Select<IApiOption>
-        className={css.select}
-        value={selectedApi}
-        options={apiOptions}
-        onChange={handleSelectApi}
-        placeholder="Select a service..."
-        filterOption={filterOption}
-      />
-      {selectedApi?.value?.versions?.length && (
-        <Select<IApiVersionOption>
+      <div className={css.wrapper}>
+        <Select<IApiOption>
           className={css.select}
-          value={selectedVersion}
-          // TODO: add hint for what to type
-          options={selectedApi?.value?.versions}
-          onChange={handleSelectVersion}
-          placeholder="Select an API version..."
+          value={selectedApi}
+          options={apiOptions}
+          onChange={handleSelectApi}
+          placeholder="Select a service..."
+          filterOption={filterOption}
         />
-      )}
-      <div ref={ref}/>
+        {selectedApi?.value?.versions?.length && (
+          <Select<IApiVersionOption>
+            className={css.select}
+            value={selectedVersion}
+            // TODO: add hint for what to type
+            options={selectedApi?.value?.versions}
+            onChange={handleSelectVersion}
+            placeholder="Select an API version..."
+          />
+        )}
+      </div>
+      <div ref={ref} />
     </>
   );
 }
