@@ -1,9 +1,12 @@
 import { PublicClientApplication, Configuration } from "@azure/msal-browser";
 
+const CLIENT_ID = "f0eaf1fc-c137-4bd1-8a54-f305273e64f4";
+const TENANT_ID = "359cb345-7b01-4eb5-b890-f2f08666a7c1";
+
 const msalConfig: Configuration = {
     auth: {
-        clientId: "f0eaf1fc-c137-4bd1-8a54-f305273e64f4",
-        authority: "https://login.microsoftonline.com/359cb345-7b01-4eb5-b890-f2f08666a7c1",
+        clientId: CLIENT_ID,
+        authority: "https://login.microsoftonline.com/" + TENANT_ID,
         redirectUri: "http://localhost:3000/",
     },
     cache: {

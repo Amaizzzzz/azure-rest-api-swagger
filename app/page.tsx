@@ -6,7 +6,6 @@ import { apiOptions, IApiOption, IApiVersionOption } from "./transform-data";
 import Select, { createFilter } from "react-select";
 import { FilterOptionOption } from "react-select/dist/declarations/src/filters";
 import { findApi, findApiVersion } from "./utils";
-import { Login } from './oauth/login';
 import { OauthPlugin, requestInterceptor } from './oauth/swagger-plugin'
 import css from "./page.module.css";
 import "./globals.css";
@@ -21,7 +20,6 @@ export default function Home({ searchParams }) {
       <header className={css.header}>
         <div className={`${css.wrapper} ${css.flex}`} >
           <h1>Azure REST API Swagger</h1>
-          <Login />
           <a
             href="https://github.com/Amaizzzzz/azure-rest-api-swagger"
             target="_blank"
