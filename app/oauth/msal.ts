@@ -5,23 +5,26 @@ const TENANT_ID = "359cb345-7b01-4eb5-b890-f2f08666a7c1";
 
 const IN_BROWER = typeof window !== "undefined";
 const IS_DEVELOP = process.env.NEXT_PUBLIC_VERCEL_ENV === "development";
+const IS_PREVIEW = process.env.NEXT_PUBLIC_VERCEL_ENV === "preview";
 
 const msalConfig: Configuration = {
-    auth: {
-        clientId: CLIENT_ID,
-        authority: "https://login.microsoftonline.com/" + TENANT_ID,
-        redirectUri: IS_DEVELOP ? "http://localhost:3000" : process.env.NEXT_PUBLIC_VERCEL_URL,
-    },
-    cache: {
-        cacheLocation: "sessionStorage",
-    },
+  auth: {
+    clientId: CLIENT_ID,
+    authority: "https://login.microsoftonline.com/" + TENANT_ID,
+    redirectUri: IS_DEVELOP
+      ? "http://localhost:3000"
+      : IS_PREVIEW
+      ? process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL
+      : process.env.NEXT_PUBLIC_VERCEL_URL,
+  },
+  cache: {
+    cacheLocation: "sessionStorage",
+  },
 };
-
 
 export const tokenRequest = {
-    scopes: ['https://management.azure.com/user_impersonation']
+  scopes: ["https://management.azure.com/user_impersonation"],
 };
-
 
 export const msal = new PublicClientApplication(msalConfig);
 IN_BROWER && msal.initialize();
