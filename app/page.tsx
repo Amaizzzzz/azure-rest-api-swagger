@@ -6,6 +6,7 @@ import { apiOptions, IApiOption, IApiVersionOption } from "./transform-data";
 import Select, { createFilter } from "react-select";
 import { FilterOptionOption } from "react-select/dist/declarations/src/filters";
 import { findApi, findApiVersion } from "./utils";
+import { OauthPlugin, requestInterceptor } from './oauth/swagger-plugin'
 import css from "./page.module.css";
 import "./globals.css";
 
@@ -64,6 +65,8 @@ function SwaggerComponent(props: { api?: string; version?: string }) {
     if (ref.current != null) {
       const swaggerObject = SwaggerUI({
         domNode: ref.current,
+        requestInterceptor: requestInterceptor,
+        plugins: [OauthPlugin]
       });
       setSwaggerObject(swaggerObject);
     }
