@@ -14,8 +14,8 @@ const msalConfig: Configuration = {
     redirectUri: IS_DEVELOP
       ? "http://localhost:3000"
       : IS_PREVIEW
-      ? process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL
-      : process.env.NEXT_PUBLIC_VERCEL_URL,
+      ? "https://" + process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL
+      : "https://" + process.env.NEXT_PUBLIC_VERCEL_URL,
   },
   cache: {
     cacheLocation: "sessionStorage",
